@@ -7,7 +7,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javax.swing.JButton;
@@ -109,12 +115,64 @@ public class Mastermind {
 				pan.add(chiffre);
 				pan.add(textChiffre);
 				
+				String dev = (String) properties.getObject("modeDev");
+				JCheckBox modeDev = new JCheckBox("Mode Développeur");
+				JPanel panDev = new JPanel();
+				modeDev.setSelected(true);
+				panDev.add(modeDev);
+				if (dev.equals("true")) {
+					jd.add(panDev, BorderLayout.SOUTH);
+				}
+					
+				
 				ok.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						// TODO Auto-generated method stub
 						
+						Properties prop = new Properties() ;
+						File fProp = new File("src/ressources/ressourcePM.properties") ;
+						 
+						// Charge le contenu de ton fichier properties dans un objet Properties
+						FileInputStream stream;
+						try {
+							stream = new FileInputStream(fProp);
+							prop.load(stream) ;
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						 
+						// Change la valeur de la clé taCle dans l'objet Properties
+						String tours= textTours.getText();
+						prop.setProperty("nbTours",tours) ;
+						String chiffre = textChiffre.getText();
+						prop.setProperty("nbChiffre", chiffre);
+						boolean b = modeDev.isSelected();
+						if (b) {
+							prop.setProperty("modeDev", "false");
+						}else {
+							prop.setProperty("modeDev", "false");
+						}
+						
+						// Charge le contenu de ton objet Properties dans ton fichier properties
+						FileOutputStream oStream;
+						try {
+							oStream = new FileOutputStream(fProp);
+							prop.store(oStream, "") ;
+						} catch (FileNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						jd.dispose();					
 					}
 					
 				});
@@ -122,15 +180,8 @@ public class Mastermind {
 				
 				jd.add(pan, BorderLayout.NORTH);
 				jd.add(panOk, BorderLayout.CENTER);
-				String dev = (String) properties.getObject("modeDev");
-				if (dev.equals("true")) {
-					JCheckBox modeDev = new JCheckBox("Mode Développeur");
-					JPanel panDev = new JPanel();
-					modeDev.setSelected(true);
-					panDev.add(modeDev);
-					jd.add(panDev, BorderLayout.SOUTH);
-				}
-								
+				
+							
 				jd.setVisible(true);
 			}
 			

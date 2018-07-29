@@ -1,5 +1,5 @@
 package jeuPM;
 
-public class IA extends Jeu{
+public class IA extends GameMaster{
 
 }
