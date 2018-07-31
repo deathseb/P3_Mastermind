@@ -1,9 +1,7 @@
 package jeuPM;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +14,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
@@ -44,6 +43,7 @@ public class Mastermind {
 		JMenu info = new JMenu ("A Propos");
 		JMenuItem mastermind = new JMenuItem("Mastermind");
 		JMenuItem plusMoins = new JMenuItem("+ ou -");
+		ButtonGroup bg = new ButtonGroup();
 		JRadioButtonMenuItem chall = new JRadioButtonMenuItem("Challenger");
 		JRadioButtonMenuItem def = new JRadioButtonMenuItem("Défenseur");
 		JRadioButtonMenuItem duel = new JRadioButtonMenuItem("Duel");
@@ -57,6 +57,11 @@ public class Mastermind {
 		
 		jeu.add(mastermind);
 		jeu.add(plusMoins);
+		
+		bg.add(chall);
+		bg.add(def);
+		bg.add(duel);
+		chall.setSelected(true);
 		
 		mode.add(chall);
 		mode.add(def);
@@ -155,7 +160,7 @@ public class Mastermind {
 						prop.setProperty("nbChiffre", chiffre);
 						boolean b = modeDev.isSelected();
 						if (b) {
-							prop.setProperty("modeDev", "false");
+							prop.setProperty("modeDev", "true");
 						}else {
 							prop.setProperty("modeDev", "false");
 						}
@@ -188,6 +193,30 @@ public class Mastermind {
 		});
 		config.add(configuration);
 		
+		plusMoins.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if (chall.isSelected()) {
+					@SuppressWarnings("unused")
+					Joueur j = new Joueur(frame);
+					
+				} else if (def.isSelected()) {
+					JLabel info = new JLabel();
+					info.setText("Mode Défenseur en cours d'édition");
+					frame.getContentPane().add(info);
+					frame.setVisible(true);
+				} else {
+					JLabel info = new JLabel();
+					info.setText("Mode Duel en cours d'édition");
+					frame.getContentPane().add(info);
+					frame.setVisible(true);
+				}
+			}
+			
+		});
+		
 		menu.add(jeu);
 		menu.add(mode);
 		menu.add(config);
@@ -197,94 +226,6 @@ public class Mastermind {
 		frame.setJMenuBar(menu);
 		frame.setVisible(true);
 
-	}
-
-	public static void initialiserPM(JFrame fenetre) { //Créer l'écran de début de jeu pour choisir le mode de jeu
-		JPanel pan = new JPanel();
-		pan.setBackground(Color.black);
-		pan.setLayout(new GridLayout(6,1));
-		
-		
-		JPanel panTitre = new JPanel();
-		JPanel panChall = new JPanel();
-		JPanel panDef = new JPanel();
-		JPanel panDuel = new JPanel();
-		JPanel panInfo = new JPanel();
-		JPanel panQuit = new JPanel();
-		JLabel titre = new JLabel();
-		JButton chall = new JButton("Mode Challenger");
-		JButton def = new JButton("Mode défenseur");
-		JButton duel = new JButton("Mode Duel");
-		JButton info = new JButton("A Propos");
-		JButton quit = new JButton("Quitter");
-		
-		titre.setBackground(Color.black);
-		titre.setText("Jeu du +/-");
-		titre.setFont(new Font ("Arial", Font.BOLD, 20));
-		titre.setForeground(Color.white);
-		
-		quit.addActionListener(new ActionListener() { //Quitter
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				System.exit(0);
-			}
-			
-		});
-		
-		info.addActionListener(new ActionListener() { // A Propos
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JDialog jd = new JDialog();
-				GridLayout gl = new GridLayout(2,1);
-				JLabel jl = new JLabel();
-				JLabel jl2 = new JLabel();
-				Locale locale = new Locale("fr", "FR");
-				ResourceBundle messages = ResourceBundle.getBundle("ressources/ressourcePM", locale);
-				String nbTours = (String) messages.getObject("nbTours");
-				jl.setText("Nombre de tours pour trouver la combinaison : " + nbTours);
-				jl2.setText( "mode développeur activé ? " + (String) messages.getObject("modeDev"));
-				
-				
-				
-				jd.setTitle("Informations");
-				jd.setLayout(gl);
-				jd.setLocationRelativeTo(null);
-				jd.setSize(300, 200);
-				jd.getContentPane().add(jl);
-				jd.getContentPane().add(jl2);
-				jd.add(jl);
-				jd.setVisible(true);
-			}
-			
-		});
-		
-		panTitre.setBackground(Color.black);
-		panTitre.add(titre);
-		panChall.setBackground(Color.black);
-		panChall.add(chall);
-		panDef.setBackground(Color.black);
-		panDef.add(def);
-		panDuel.setBackground(Color.black);
-		panDuel.add(duel);
-		panInfo.setBackground(Color.black);
-		panInfo.add(info);
-		panQuit.setBackground(Color.black);
-		panQuit.add(quit);
-		
-		
-		pan.add(panTitre);
-		pan.add(panChall);
-		pan.add(panDef);
-		pan.add(panDuel);
-		pan.add(panInfo);
-		pan.add(panQuit);
-		fenetre.getContentPane().add(pan);
-		fenetre.getContentPane().validate();
-		fenetre.setVisible(true);
 	}
 
 }

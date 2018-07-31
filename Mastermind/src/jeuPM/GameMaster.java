@@ -4,41 +4,59 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public abstract class GameMaster {
 
 	protected int nbTours;
-	protected String combi;
+	protected String combi = "";
 	protected boolean dev;
+	protected String egale ="";
 	
 	public GameMaster() {
 		Locale locale = new Locale("fr","FR");
-		ResourceBundle properties = ResourceBundle.getBundle("ressources/ressourcesPM",locale);
-		nbTours = (int) properties.getObject("nbTours");
-		dev = (boolean) properties.getObject("modeDev");
-		for(int i=0; i< (int) properties.getObject("nbChiffre"); i++) {
+		ResourceBundle properties = ResourceBundle.getBundle("ressources/ressourcePM",locale);
+		String temp = (String) properties.getObject("nbTours");
+		nbTours = Integer.parseInt(temp);
+		temp = (String) properties.getObject("modeDev");
+		dev = Boolean.parseBoolean(temp);
+		temp = (String) properties.getObject("nbChiffre");
+		int nbChiffre = Integer.parseInt(temp);
+		for(int i=0; i< nbChiffre; i++) {
 			Double d= (Math.random() * (10 - 0));
-			combi = combi + d.toString();
+			combi = combi + d.intValue();
+			egale = egale +"=";
 		}
+		
 	}
 	
 	public JLabel reponse (JLabel prop) {
-		String res = null;
-		for (int i =0; i< combi.length(); i++) {
-			if (combi.charAt(i)==prop.getText().charAt(i)) {
-				res = res+ "=";
-			} else {
+		String res = "";
+		JLabel retour = new JLabel();
+		if (nbTours == 0) {
+			JOptionPane.showMessageDialog(null, "Game Over ! Vous n'avez pas réussi à trouver la combinaison qui était " + combi, "Game Over!!", JOptionPane.INFORMATION_MESSAGE);
+		}else {
+			for (int i =0; i < combi.length(); i++) {
 				int j = Character.getNumericValue(combi.charAt(i));
 				int k = Character.getNumericValue(prop.getText().charAt(i));
-				if (j>k) {
-					res = res + "+";
+				if (j==k) {
+					res = res+ "=";
 				} else {
-					res = res + "-";
+					if (j>k) {
+						res = res + "+";
+					} else {
+						res = res + "-";
+					}
 				}
 			}
+			nbTours = nbTours-1;
+			retour.setText(res);
+			if (res.equals(egale)) {
+				JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
-		JLabel retour = new JLabel();
-		retour.setText(res);
 		return retour;
+		
+		
 	}
 }
