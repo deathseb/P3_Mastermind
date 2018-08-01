@@ -6,18 +6,81 @@
     </packageImport>
     <packagedElement xmi:type="uml:Package" xmi:id="_Hx_SsJCbEeiRGosyU19Rmw" name="Mastermind">
       <packagedElement xmi:type="uml:Package" xmi:id="_H1_B4JCbEeiRGosyU19Rmw" name="jeuPM">
-        <packagedElement xmi:type="uml:Class" xmi:id="_H2FIgJCbEeiRGosyU19Rmw" name="Jeu" visibility="public" isAbstract="true"/>
         <packagedElement xmi:type="uml:Class" xmi:id="_H2JZ8JCbEeiRGosyU19Rmw" name="Joueur" visibility="public">
-          <generalization xmi:type="uml:Generalization" xmi:id="_H2O5gJCbEeiRGosyU19Rmw" general="_H2FIgJCbEeiRGosyU19Rmw"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_VV2MkJW6Eei01sMdaRndjQ" general="_VIXKMJW6Eei01sMdaRndjQ"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_M4lHIJCdEeiRGosyU19Rmw" name="type" visibility="private" type="_H2vP0JCbEeiRGosyU19Rmw" isUnique="false"/>
-          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_M5CaIJCdEeiRGosyU19Rmw" name="Joueur" specification="_M4uREJCdEeiRGosyU19Rmw">
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VWRqYJW6Eei01sMdaRndjQ" name="Joueur" specification="_VWDA4JW6Eei01sMdaRndjQ">
             <language>JAVA</language>
             <body>&#xD;
-    this.type = type;&#xD;
+    super();&#xD;
+    JPanel pan = new JPanel();&#xD;
+    JPanel panEnvoie = new JPanel();&#xD;
+    JTextField jtf = new JTextField();&#xD;
+    JButton envoie = new JButton(&quot;Proposer&quot;);&#xD;
+    GridLayout gridGenerale = new GridLayout(this.nbTours + 1, 2);&#xD;
+    GridLayout gridDonnees = new GridLayout(2, 1);&#xD;
+    JLabel prop = new JLabel(&quot;Proposition&quot;);&#xD;
+    JLabel rep = new JLabel(&quot;Réponse&quot;);&#xD;
+    GridLayout gridInfo = new GridLayout(1, 2);&#xD;
+    JLabel comptTours = new JLabel();&#xD;
+    JPanel panDev = new JPanel();&#xD;
+    panDev.setLayout(gridInfo);&#xD;
+    comptTours.setText(&quot;Il reste &quot; + nbTours + &quot; tours.&quot;);&#xD;
+    panDev.add(comptTours);&#xD;
+    envoie.addActionListener(new ActionListener() {&#xD;
+&#xD;
+        @Override&#xD;
+        public void actionPerformed(ActionEvent arg0) {&#xD;
+            // TODO Auto-generated method stub&#xD;
+            try {&#xD;
+                @SuppressWarnings(&quot;unused&quot;) int test = Integer.parseInt(jtf.getText());&#xD;
+                if (jtf.getText().length() != combi.length()) {&#xD;
+                    JOptionPane.showMessageDialog(null, &quot;Veuillez rentrer une combinaison de &quot; + combi.length() + &quot; chiffres&quot;, &quot;Erreur&quot;, JOptionPane.ERROR_MESSAGE);&#xD;
+                } else if (!(nbTours == -1)) {&#xD;
+                    comptTours.setText(&quot;Il reste &quot; + nbTours + &quot; tours.&quot;);&#xD;
+                    panDev.add(comptTours);&#xD;
+                    JLabel prop = new JLabel();&#xD;
+                    prop.setText(jtf.getText());&#xD;
+                    pan.add(prop);&#xD;
+                    JLabel retour = reponse(prop, frame);&#xD;
+                    if (retour.getText().equals(egale)) {&#xD;
+                        JOptionPane.showMessageDialog(null, &quot;Vous avez trouvez la combinaison, bravo !!&quot;, &quot;Félicitations!!&quot;, JOptionPane.INFORMATION_MESSAGE);&#xD;
+                        frame.getContentPane().remove(pan);&#xD;
+                        frame.getContentPane().remove(panEnvoie);&#xD;
+                        frame.getContentPane().remove(panDev);&#xD;
+                        frame.getContentPane().add(new JPanel());&#xD;
+                        frame.setVisible(true);&#xD;
+                    } else {&#xD;
+                        pan.add(retour);&#xD;
+                        jtf.setText(&quot;&quot;);&#xD;
+                        frame.getContentPane().add(pan);&#xD;
+                        frame.setVisible(true);&#xD;
+                    }&#xD;
+                }&#xD;
+            } catch (NumberFormatException e) {&#xD;
+                JOptionPane.showMessageDialog(null, &quot;Veuillez rentrer une combinaison de &quot; + combi.length() + &quot; chiffres&quot;, &quot;Erreur&quot;, JOptionPane.ERROR_MESSAGE);&#xD;
+            }&#xD;
+        }&#xD;
+    });&#xD;
+    if (dev) {&#xD;
+        JLabel modeDev = new JLabel();&#xD;
+        modeDev.setText(&quot;Mode développeur activé.   Combinaison : &quot; + combi);&#xD;
+        panDev.add(modeDev);&#xD;
+        frame.getContentPane().add(panDev, BorderLayout.NORTH);&#xD;
+    }&#xD;
+    panEnvoie.setLayout(gridDonnees);&#xD;
+    panEnvoie.add(jtf);&#xD;
+    panEnvoie.add(envoie);&#xD;
+    pan.setLayout(gridGenerale);&#xD;
+    pan.add(prop);&#xD;
+    pan.add(rep);&#xD;
+    frame.getContentPane().add(pan, BorderLayout.CENTER);&#xD;
+    frame.getContentPane().add(panEnvoie, BorderLayout.SOUTH);&#xD;
+    frame.setVisible(true);&#xD;
 </body>
           </ownedBehavior>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_M4uREJCdEeiRGosyU19Rmw" name="Joueur" visibility="public" method="_M5CaIJCdEeiRGosyU19Rmw">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_M5BMAJCdEeiRGosyU19Rmw" name="type" type="_H2vP0JCbEeiRGosyU19Rmw"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VWDA4JW6Eei01sMdaRndjQ" name="Joueur" visibility="public" method="_VWRqYJW6Eei01sMdaRndjQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VWMx4JW6Eei01sMdaRndjQ" name="frame" type="_H8TFQJCbEeiRGosyU19Rmw"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_H2le0JCbEeiRGosyU19Rmw" name="Mastermind" visibility="public">
@@ -27,47 +90,161 @@
     // TODO Auto-generated method stub&#xD;
     //initialiserPM();&#xD;
     JFrame frame = new JFrame();&#xD;
-    JPanel pan = new JPanel();&#xD;
-    JPanel panMaster = new JPanel();&#xD;
-    JPanel panPlus = new JPanel();&#xD;
-    JPanel panQuitter = new JPanel();&#xD;
-    JButton mastermind = new JButton(&quot;Jouer au MasterMind&quot;);&#xD;
-    JButton plusMoins = new JButton(&quot;Jouer au + / -&quot;);&#xD;
-    JButton quitter = new JButton(&quot;Quitter&quot;);&#xD;
+    //JPanel pan = new JPanel();&#xD;
+    JMenuBar menu = new JMenuBar();&#xD;
+    JMenu jeu = new JMenu(&quot;Jeu&quot;);&#xD;
+    JMenu mode = new JMenu(&quot;Mode&quot;);&#xD;
+    JMenu config = new JMenu(&quot;Configuration&quot;);&#xD;
+    JMenu info = new JMenu(&quot;A Propos&quot;);&#xD;
+    JMenuItem mastermind = new JMenuItem(&quot;Mastermind&quot;);&#xD;
+    JMenuItem plusMoins = new JMenuItem(&quot;+ ou -&quot;);&#xD;
+    ButtonGroup bg = new ButtonGroup();&#xD;
+    JRadioButtonMenuItem chall = new JRadioButtonMenuItem(&quot;Challenger&quot;);&#xD;
+    JRadioButtonMenuItem def = new JRadioButtonMenuItem(&quot;Défenseur&quot;);&#xD;
+    JRadioButtonMenuItem duel = new JRadioButtonMenuItem(&quot;Duel&quot;);&#xD;
+    JMenuItem apropos = new JMenuItem(&quot;A Propos&quot;);&#xD;
+    JMenuItem configuration = new JMenuItem(&quot;Configuration&quot;);&#xD;
     frame.setTitle(&quot;P3 - Mettez votre logique à l'épreuve&quot;);&#xD;
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#xD;
-    frame.setSize(300, 600);&#xD;
+    frame.setSize(800, 400);&#xD;
     frame.setLocationRelativeTo(null);&#xD;
-    pan.setBackground(Color.black);&#xD;
-    GridLayout gl = new GridLayout(3, 1);&#xD;
-    quitter.addActionListener(new ActionListener() {&#xD;
+    jeu.add(mastermind);&#xD;
+    jeu.add(plusMoins);&#xD;
+    bg.add(chall);&#xD;
+    bg.add(def);&#xD;
+    bg.add(duel);&#xD;
+    chall.setSelected(true);&#xD;
+    mode.add(chall);&#xD;
+    mode.add(def);&#xD;
+    mode.add(duel);&#xD;
+    apropos.addActionListener(new ActionListener() {&#xD;
 &#xD;
         @Override&#xD;
         public void actionPerformed(ActionEvent arg0) {&#xD;
             // TODO Auto-generated method stub&#xD;
-            System.exit(0);&#xD;
+            JDialog jd = new JDialog();&#xD;
+            jd.setTitle(&quot;A Propos&quot;);&#xD;
+            jd.setSize(new Dimension(500, 250));&#xD;
+            jd.setLocationRelativeTo(null);&#xD;
+            Locale locale = new Locale(&quot;fr&quot;, &quot;FR&quot;);&#xD;
+            ResourceBundle properties = ResourceBundle.getBundle(&quot;ressources/ressourcePM&quot;, locale);&#xD;
+            JTextPane jtp = new JTextPane();&#xD;
+            //retire la possibilité d'écrire&#xD;
+            jtp.setEditable(false);&#xD;
+            jtp.setText(&quot;Auteur : LE BAIL Sébastien\nVersion : &quot; + (String) properties.getObject(&quot;version&quot;));&#xD;
+            jd.add(jtp);&#xD;
+            jd.setVisible(true);&#xD;
         }&#xD;
     });&#xD;
+    info.add(apropos);&#xD;
+    configuration.addActionListener(new //incomplet&#xD;
+    ActionListener() {&#xD;
+&#xD;
+        @Override&#xD;
+        public void actionPerformed(ActionEvent arg0) {&#xD;
+            // TODO Auto-generated method stub&#xD;
+            JPanel pan = new JPanel();&#xD;
+            JDialog jd = new JDialog();&#xD;
+            jd.setTitle(&quot;Configuration&quot;);&#xD;
+            jd.setSize(new Dimension(500, 250));&#xD;
+            jd.setLocationRelativeTo(null);&#xD;
+            GridLayout gl = new GridLayout(2, 2);&#xD;
+            Locale locale = new Locale(&quot;fr&quot;, &quot;FR&quot;);&#xD;
+            ResourceBundle properties = ResourceBundle.getBundle(&quot;ressources/ressourcePM&quot;, locale);&#xD;
+            JButton ok = new JButton(&quot;Valider&quot;);&#xD;
+            JPanel panOk = new JPanel();&#xD;
+            JLabel tours = new JLabel(&quot;Nombre de tours de jeu : &quot;);&#xD;
+            JLabel chiffre = new JLabel(&quot;Nombre de chiffre dans la combinaison : &quot;);&#xD;
+            JTextField textTours = new JTextField();&#xD;
+            JTextField textChiffre = new JTextField();&#xD;
+            textTours.setText((String) properties.getObject(&quot;nbTours&quot;));&#xD;
+            textChiffre.setText((String) properties.getObject(&quot;nbChiffre&quot;));&#xD;
+            pan.setLayout(gl);&#xD;
+            pan.add(tours);&#xD;
+            pan.add(textTours);&#xD;
+            pan.add(chiffre);&#xD;
+            pan.add(textChiffre);&#xD;
+            String dev = (String) properties.getObject(&quot;modeDev&quot;);&#xD;
+            JCheckBox modeDev = new JCheckBox(&quot;Mode Développeur&quot;);&#xD;
+            JPanel panDev = new JPanel();&#xD;
+            modeDev.setSelected(true);&#xD;
+            panDev.add(modeDev);&#xD;
+            if (dev.equals(&quot;true&quot;)) {&#xD;
+                jd.add(panDev, BorderLayout.SOUTH);&#xD;
+            }&#xD;
+            ok.addActionListener(new ActionListener() {&#xD;
+&#xD;
+                @Override&#xD;
+                public void actionPerformed(ActionEvent arg0) {&#xD;
+                    // TODO Auto-generated method stub&#xD;
+                    Properties prop = new Properties();&#xD;
+                    File fProp = new File(&quot;src/ressources/ressourcePM.properties&quot;);&#xD;
+                    // Charge le contenu de ton fichier properties dans un objet Properties&#xD;
+                    FileInputStream stream;&#xD;
+                    try {&#xD;
+                        stream = new FileInputStream(fProp);&#xD;
+                        prop.load(stream);&#xD;
+                    } catch (FileNotFoundException e) {&#xD;
+                        e.printStackTrace();&#xD;
+                    } catch (IOException e) {&#xD;
+                        e.printStackTrace();&#xD;
+                    }&#xD;
+                    // Change la valeur de la clé taCle dans l'objet Properties&#xD;
+                    String tours = textTours.getText();&#xD;
+                    prop.setProperty(&quot;nbTours&quot;, tours);&#xD;
+                    String chiffre = textChiffre.getText();&#xD;
+                    prop.setProperty(&quot;nbChiffre&quot;, chiffre);&#xD;
+                    boolean b = modeDev.isSelected();&#xD;
+                    if (b) {&#xD;
+                        prop.setProperty(&quot;modeDev&quot;, &quot;true&quot;);&#xD;
+                    } else {&#xD;
+                        prop.setProperty(&quot;modeDev&quot;, &quot;false&quot;);&#xD;
+                    }&#xD;
+                    // Charge le contenu de ton objet Properties dans ton fichier properties&#xD;
+                    FileOutputStream oStream;&#xD;
+                    try {&#xD;
+                        oStream = new FileOutputStream(fProp);&#xD;
+                        prop.store(oStream, &quot;&quot;);&#xD;
+                    } catch (FileNotFoundException e) {&#xD;
+                        e.printStackTrace();&#xD;
+                    } catch (IOException e) {&#xD;
+                        e.printStackTrace();&#xD;
+                    }&#xD;
+                    jd.dispose();&#xD;
+                }&#xD;
+            });&#xD;
+            panOk.add(ok, BorderLayout.SOUTH);&#xD;
+            jd.add(pan, BorderLayout.NORTH);&#xD;
+            jd.add(panOk, BorderLayout.CENTER);&#xD;
+            jd.setVisible(true);&#xD;
+        }&#xD;
+    });&#xD;
+    config.add(configuration);&#xD;
     plusMoins.addActionListener(new ActionListener() {&#xD;
 &#xD;
         @Override&#xD;
-        public void actionPerformed(ActionEvent e) {&#xD;
+        public void actionPerformed(ActionEvent arg0) {&#xD;
             // TODO Auto-generated method stub&#xD;
-            frame.getContentPane().remove(pan);&#xD;
-            initialiserPM(frame);&#xD;
+            if (chall.isSelected()) {&#xD;
+                @SuppressWarnings(&quot;unused&quot;) Joueur j = new Joueur(frame);&#xD;
+            } else if (def.isSelected()) {&#xD;
+                JLabel info = new JLabel();&#xD;
+                info.setText(&quot;Mode Défenseur en cours d'édition&quot;);&#xD;
+                frame.getContentPane().add(info);&#xD;
+                frame.setVisible(true);&#xD;
+            } else {&#xD;
+                JLabel info = new JLabel();&#xD;
+                info.setText(&quot;Mode Duel en cours d'édition&quot;);&#xD;
+                frame.getContentPane().add(info);&#xD;
+                frame.setVisible(true);&#xD;
+            }&#xD;
         }&#xD;
     });&#xD;
-    panMaster.setBackground(Color.black);&#xD;
-    panPlus.setBackground(Color.black);&#xD;
-    panQuitter.setBackground(Color.black);&#xD;
-    panMaster.add(mastermind);&#xD;
-    panPlus.add(plusMoins);&#xD;
-    panQuitter.add(quitter);&#xD;
-    pan.setLayout(gl);&#xD;
-    pan.add(panMaster);&#xD;
-    pan.add(panPlus);&#xD;
-    pan.add(panQuitter);&#xD;
-    frame.getContentPane().add(pan, BorderLayout.CENTER);&#xD;
+    menu.add(jeu);&#xD;
+    menu.add(mode);&#xD;
+    menu.add(config);&#xD;
+    menu.add(info);&#xD;
+    frame.setJMenuBar(menu);&#xD;
     frame.setVisible(true);&#xD;
 </body>
           </ownedBehavior>
@@ -163,7 +340,79 @@
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_H8q4sJCbEeiRGosyU19Rmw" name="IA" visibility="public">
-          <generalization xmi:type="uml:Generalization" xmi:id="_H8st4JCbEeiRGosyU19Rmw" general="_H2FIgJCbEeiRGosyU19Rmw"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_VWvkcJW6Eei01sMdaRndjQ" general="_VIXKMJW6Eei01sMdaRndjQ"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_VIXKMJW6Eei01sMdaRndjQ" name="GameMaster" visibility="public" isAbstract="true">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_VJvDMJW6Eei01sMdaRndjQ" name="nbTours" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_VJ40MJW6Eei01sMdaRndjQ" name="combi" visibility="protected" type="_H2vP0JCbEeiRGosyU19Rmw" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VJ-TwJW6Eei01sMdaRndjQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_VKLvIJW6Eei01sMdaRndjQ" name="dev" visibility="protected" isUnique="false">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_VKXVUJW6Eei01sMdaRndjQ" name="egale" visibility="protected" type="_H2vP0JCbEeiRGosyU19Rmw" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_VKhtYJW6Eei01sMdaRndjQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VUJjcJW6Eei01sMdaRndjQ" name="GameMaster" specification="_VKppMJW6Eei01sMdaRndjQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    Locale locale = new Locale(&quot;fr&quot;, &quot;FR&quot;);&#xD;
+    ResourceBundle properties = ResourceBundle.getBundle(&quot;ressources/ressourcePM&quot;, locale);&#xD;
+    String temp = (String) properties.getObject(&quot;nbTours&quot;);&#xD;
+    nbTours = Integer.parseInt(temp);&#xD;
+    temp = (String) properties.getObject(&quot;modeDev&quot;);&#xD;
+    dev = Boolean.parseBoolean(temp);&#xD;
+    temp = (String) properties.getObject(&quot;nbChiffre&quot;);&#xD;
+    int nbChiffre = Integer.parseInt(temp);&#xD;
+    for (int i = 0; i &lt; nbChiffre; i++) {&#xD;
+        Double d = (Math.random() * (10 - 0));&#xD;
+        combi = combi + d.intValue();&#xD;
+        egale = egale + &quot;=&quot;;&#xD;
+    }&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_VVWdUJW6Eei01sMdaRndjQ" name="reponse" specification="_VUs9EJW6Eei01sMdaRndjQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String res = &quot;&quot;;&#xD;
+    JLabel retour = new JLabel();&#xD;
+    if (nbTours == 0) {&#xD;
+        JOptionPane.showMessageDialog(null, &quot;Game Over ! Vous n'avez pas réussi à trouver la combinaison qui était &quot; + combi, &quot;Game Over!!&quot;, JOptionPane.INFORMATION_MESSAGE);&#xD;
+        frame.getContentPane().removeAll();&#xD;
+    } else {&#xD;
+        for (int i = 0; i &lt; combi.length(); i++) {&#xD;
+            int j = Character.getNumericValue(combi.charAt(i));&#xD;
+            int k = Character.getNumericValue(prop.getText().charAt(i));&#xD;
+            if (j == k) {&#xD;
+                res = res + &quot;=&quot;;&#xD;
+            } else {&#xD;
+                if (j > k) {&#xD;
+                    res = res + &quot;+&quot;;&#xD;
+                } else {&#xD;
+                    res = res + &quot;-&quot;;&#xD;
+                }&#xD;
+            }&#xD;
+        }&#xD;
+        nbTours = nbTours - 1;&#xD;
+        retour.setText(res);&#xD;
+    }&#xD;
+    return retour;&#xD;
+</body>
+          </ownedBehavior>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VKppMJW6Eei01sMdaRndjQ" name="GameMaster" visibility="public" method="_VUJjcJW6Eei01sMdaRndjQ"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VUs9EJW6Eei01sMdaRndjQ" name="reponse" visibility="public" method="_VVWdUJW6Eei01sMdaRndjQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VU4jQJW6Eei01sMdaRndjQ" type="_VUW-0JW6Eei01sMdaRndjQ" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VVC7UJW6Eei01sMdaRndjQ" name="prop" type="_VUW-0JW6Eei01sMdaRndjQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VVN6cJW6Eei01sMdaRndjQ" name="frame" type="_H8TFQJCbEeiRGosyU19Rmw"/>
+          </ownedOperation>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -178,6 +427,7 @@
       <packagedElement xmi:type="uml:Package" xmi:id="_H8QpAJCbEeiRGosyU19Rmw" name="javax">
         <packagedElement xmi:type="uml:Package" xmi:id="_H8R3IJCbEeiRGosyU19Rmw" name="swing">
           <packagedElement xmi:type="uml:Class" xmi:id="_H8TFQJCbEeiRGosyU19Rmw" name="JFrame"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_VUW-0JW6Eei01sMdaRndjQ" name="JLabel"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -202,5 +452,7 @@
   </uml:Model>
   <PapyrusJava:External xmi:id="_H7hpMJCbEeiRGosyU19Rmw" name="java.lang.String" base_Classifier="_H2vP0JCbEeiRGosyU19Rmw"/>
   <PapyrusJava:External xmi:id="_H8X9wJCbEeiRGosyU19Rmw" name="javax.swing.JFrame" base_Classifier="_H8TFQJCbEeiRGosyU19Rmw"/>
-  <standard:Create xmi:id="_M47scJCdEeiRGosyU19Rmw" base_BehavioralFeature="_M4uREJCdEeiRGosyU19Rmw"/>
+  <standard:Create xmi:id="_VT6S4JW6Eei01sMdaRndjQ" base_BehavioralFeature="_VKppMJW6Eei01sMdaRndjQ"/>
+  <PapyrusJava:External xmi:id="_VUilAJW6Eei01sMdaRndjQ" name="javax.swing.JLabel" base_Classifier="_VUW-0JW6Eei01sMdaRndjQ"/>
+  <standard:Create xmi:id="_VWKVoJW6Eei01sMdaRndjQ" base_BehavioralFeature="_VWDA4JW6Eei01sMdaRndjQ"/>
 </xmi:XMI>

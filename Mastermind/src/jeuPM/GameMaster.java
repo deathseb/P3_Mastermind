@@ -3,6 +3,7 @@ package jeuPM;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -30,11 +31,12 @@ public abstract class GameMaster {
 		
 	}
 	
-	public JLabel reponse (JLabel prop) {
+	public JLabel reponse (JLabel prop, JFrame frame) {
 		String res = "";
 		JLabel retour = new JLabel();
 		if (nbTours == 0) {
 			JOptionPane.showMessageDialog(null, "Game Over ! Vous n'avez pas réussi à trouver la combinaison qui était " + combi, "Game Over!!", JOptionPane.INFORMATION_MESSAGE);
+			frame.getContentPane().removeAll();
 		}else {
 			for (int i =0; i < combi.length(); i++) {
 				int j = Character.getNumericValue(combi.charAt(i));
@@ -51,9 +53,6 @@ public abstract class GameMaster {
 			}
 			nbTours = nbTours-1;
 			retour.setText(res);
-			if (res.equals(egale)) {
-				JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);
-			}
 		}
 		return retour;
 		

@@ -51,10 +51,21 @@ public class Joueur extends GameMaster{
 				    	JLabel prop = new JLabel();
 				    	prop.setText(jtf.getText());
 				    	pan.add(prop);
-				    	pan.add(reponse(prop));
-				    	jtf.setText("");
-				    	frame.getContentPane().add(pan);
-				    	frame.setVisible(true);
+				    	JLabel retour = reponse(prop, frame);
+				    	if (retour.getText().equals(egale)) {
+				    		JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);
+							frame.getContentPane().remove(pan);
+							frame.getContentPane().remove(panEnvoie);
+							frame.getContentPane().remove(panDev);
+							frame.getContentPane().add(new JPanel());
+							frame.setVisible(true);
+				    	} else {
+				    		pan.add(retour);
+					    	jtf.setText("");
+					    	frame.getContentPane().add(pan);
+					    	frame.setVisible(true);
+				    	}
+				    	
 				    }
 				} catch (NumberFormatException e) {
 					JOptionPane.showMessageDialog(null, "Veuillez rentrer une combinaison de " + combi.length() + " chiffres", "Erreur", JOptionPane.ERROR_MESSAGE);
