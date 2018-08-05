@@ -14,7 +14,7 @@ import javax.swing.JRadioButtonMenuItem;
 public class Mastermind{
 
 	private static Propriete propriete;
-	
+
 	private static JFrame frame = new JFrame();
 	private static JMenuBar menu = new JMenuBar();
 	private static JMenu jeu = new JMenu("Jeu");
@@ -29,13 +29,13 @@ public class Mastermind{
 	private static JRadioButtonMenuItem duel = new JRadioButtonMenuItem("Duel");
 	private static JMenuItem apropos = new JMenuItem("A Propos");
 	private static JMenuItem configuration = new JMenuItem("Configuration");
-	
+
 	private static Configuration c;
-	
-	
+
+
 
 	public static void main(String[] args) { //créer le menu et lance le jeu sélectionné
-		
+
 		frame.setTitle("P3 - Mettez votre logique à l'épreuve");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800,400);
@@ -47,7 +47,7 @@ public class Mastermind{
 		bg.add(chall);
 		bg.add(def);
 		bg.add(duel);
-		
+
 		chall.setSelected(true);
 
 		mode.add(chall);
@@ -63,7 +63,7 @@ public class Mastermind{
 			}
 
 		});
-		
+
 		info.add(apropos);
 
 		configuration.addActionListener(new ActionListener() { 
@@ -86,10 +86,9 @@ public class Mastermind{
 					Joueur j = new Joueur(frame, propriete);
 
 				} else if (def.isSelected()) {
-					JLabel info = new JLabel();
-					info.setText("Mode Défenseur en cours d'édition");
-					frame.getContentPane().add(info);
-					frame.setVisible(true);
+					c = new Configuration();
+					propriete = c.getProperties();
+					IA ordi = new IA (frame, propriete);
 				} else {
 					JLabel info = new JLabel();
 					info.setText("Mode Duel en cours d'édition");

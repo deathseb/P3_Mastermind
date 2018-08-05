@@ -473,6 +473,96 @@
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_H8q4sJCbEeiRGosyU19Rmw" name="IA" visibility="public">
           <generalization xmi:type="uml:Generalization" xmi:id="_VWvkcJW6Eei01sMdaRndjQ" general="_VIXKMJW6Eei01sMdaRndjQ"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPbIgJiuEeilzLp3awIxoQ" name="lastProp" visibility="private" type="_H2vP0JCbEeiRGosyU19Rmw" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPidQJiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>&quot;&quot;</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPmusJiuEeilzLp3awIxoQ" name="pan" visibility="private" type="_dE0tYJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPnVwJiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JPanel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPn80JiuEeilzLp3awIxoQ" name="panEnvoie" visibility="private" type="_dE0tYJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPn80ZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JPanel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPn80piuEeilzLp3awIxoQ" name="panDev" visibility="private" type="_dE0tYJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPoj4JiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JPanel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPoj4ZiuEeilzLp3awIxoQ" name="jtf" visibility="private" type="_dnYn4JZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPpK8JiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JTextField()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPrAIJiuEeilzLp3awIxoQ" name="envoie" visibility="private" type="_dFHoUJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPrAIZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JButton(&quot;Proposer&quot;)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPrnMJiuEeilzLp3awIxoQ" name="gridGenerale" visibility="private" type="_dn6MUJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPrnMZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new GridLayout(this.nbTours + 1, 2)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPsOQJiuEeilzLp3awIxoQ" name="gridDonnees" visibility="private" type="_dn6MUJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPs1UJiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new GridLayout(2, 1)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPtcYJiuEeilzLp3awIxoQ" name="gridInfo" visibility="private" type="_dn6MUJZdEeimz_DnnOMIWg" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPtcYZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new GridLayout(1, 2)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPuDcJiuEeilzLp3awIxoQ" name="prop" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPuDcZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel(&quot;Proposition&quot;)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPuqgJiuEeilzLp3awIxoQ" name="rep" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPvRkJiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel(&quot;Réponse&quot;)</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPv4oJiuEeilzLp3awIxoQ" name="comptTours" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPv4oZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPwfsJiuEeilzLp3awIxoQ" name="propo" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPwfsZiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPxGwJiuEeilzLp3awIxoQ" name="modeDev" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPxt0JiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel()</body>
+            </defaultValue>
+          </ownedAttribute>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_NPxt0ZiuEeilzLp3awIxoQ" name="repo" visibility="private" type="_VUW-0JW6Eei01sMdaRndjQ" isUnique="false">
+            <defaultValue xmi:type="uml:OpaqueExpression" xmi:id="_NPyU4JiuEeilzLp3awIxoQ" name="defaultValue">
+              <language>JAVA</language>
+              <body>new JLabel()</body>
+            </defaultValue>
+          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_evxMQJZdEeimz_DnnOMIWg" name="IA" specification="_evnbQJZdEeimz_DnnOMIWg">
             <language>JAVA</language>
             <body>&#xD;
@@ -480,8 +570,151 @@
 // TODO Auto-generated constructor stub&#xD;
 </body>
           </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_NUJ3gJiuEeilzLp3awIxoQ" name="IA" specification="_NPzjAJiuEeilzLp3awIxoQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    super(properties);&#xD;
+    panDev.setLayout(gridInfo);&#xD;
+    comptTours.setText(&quot;Il reste &quot; + nbTours + &quot; tours.&quot;);&#xD;
+    panDev.add(comptTours);&#xD;
+    if (lastProp == &quot;&quot;) {&#xD;
+        for (int i = 0; i &lt; combi.length(); i++) {&#xD;
+            lastProp = lastProp + &quot;5&quot;;&#xD;
+        }&#xD;
+        propo.setText(lastProp);&#xD;
+    }&#xD;
+    envoie.addActionListener(new ActionListener() {&#xD;
+&#xD;
+        @Override&#xD;
+        public void actionPerformed(ActionEvent arg0) {&#xD;
+            try {&#xD;
+                if (jtf.getText().length() != combi.length()) {&#xD;
+                    JOptionPane.showMessageDialog(null, &quot;Veuillez rentrer une combinaison de &quot; + combi.length() + &quot; chiffres&quot;, &quot;Erreur&quot;, JOptionPane.ERROR_MESSAGE);&#xD;
+                } else if (!(nbTours == -1)) {&#xD;
+                    comptTours.setText(&quot;Il reste &quot; + nbTours + &quot; tours.&quot;);&#xD;
+                    panDev.add(comptTours);&#xD;
+                    repo.setText(jtf.getText());&#xD;
+                    pan.add(repo);&#xD;
+                    if (repo.getText().equals(egale)) {&#xD;
+                        JOptionPane.showMessageDialog(null, &quot;Vous avez trouvez la combinaison, bravo !!&quot;, &quot;Félicitations!!&quot;, JOptionPane.INFORMATION_MESSAGE);&#xD;
+                        frame.getContentPane().remove(pan);&#xD;
+                        frame.getContentPane().remove(panEnvoie);&#xD;
+                        frame.getContentPane().remove(panDev);&#xD;
+                        frame.getContentPane().add(new JPanel());&#xD;
+                        frame.setVisible(true);&#xD;
+                    } else {&#xD;
+                        propo.setText(IAProp(repo.getText()));&#xD;
+                        jtf.setText(&quot;&quot;);&#xD;
+                        pan.add(propo);&#xD;
+                        frame.getContentPane().add(pan);&#xD;
+                        frame.setVisible(true);&#xD;
+                    }&#xD;
+                }&#xD;
+            } catch (NumberFormatException e) {&#xD;
+                JOptionPane.showMessageDialog(null, &quot;Veuillez rentrer une combinaison de &quot; + combi.length() + &quot; chiffres&quot;, &quot;Erreur&quot;, JOptionPane.ERROR_MESSAGE);&#xD;
+            }&#xD;
+        }&#xD;
+    });&#xD;
+    modeDev.setText(&quot;Combinaison : &quot; + combi);&#xD;
+    panDev.add(modeDev);&#xD;
+    frame.getContentPane().add(panDev, BorderLayout.NORTH);&#xD;
+    panEnvoie.setLayout(gridDonnees);&#xD;
+    panEnvoie.add(jtf);&#xD;
+    panEnvoie.add(envoie);&#xD;
+    pan.setLayout(gridGenerale);&#xD;
+    pan.add(prop);&#xD;
+    pan.add(rep);&#xD;
+    pan.add(propo);&#xD;
+    frame.getContentPane().add(pan, BorderLayout.CENTER);&#xD;
+    frame.getContentPane().add(panEnvoie, BorderLayout.SOUTH);&#xD;
+    frame.setVisible(true);&#xD;
+</body>
+          </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_NURMQJiuEeilzLp3awIxoQ" name="IAProp" specification="_NULssJiuEeilzLp3awIxoQ">
+            <language>JAVA</language>
+            <body>&#xD;
+    String prop = &quot;&quot;;&#xD;
+    char r = ' ';&#xD;
+    char p = ' ';&#xD;
+    for (int i = 0; i &lt; rep.length(); i++) {&#xD;
+        r = rep.charAt(i);&#xD;
+        p = lastProp.charAt(i);&#xD;
+        if (p == '5') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '5';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '8';&#xD;
+            } else {&#xD;
+                prop = prop + '2';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '2') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '2';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '3';&#xD;
+            } else {&#xD;
+                prop = prop + '1';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '8') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '8';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '9';&#xD;
+            } else {&#xD;
+                prop = prop + '7';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '3') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '3';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '4';&#xD;
+            } else {&#xD;
+                prop = prop + '2';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '7') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '7';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '8';&#xD;
+            } else {&#xD;
+                prop = prop + '6';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '1') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '1';&#xD;
+            } else if (r == '+') {&#xD;
+                prop = prop + '2';&#xD;
+            } else {&#xD;
+                prop = prop + '0';&#xD;
+            }&#xD;
+        }&#xD;
+        if (p == '9') {&#xD;
+            if (r == '=') {&#xD;
+                prop = prop + '9';&#xD;
+            } else {&#xD;
+                prop = prop + '8';&#xD;
+            }&#xD;
+        }&#xD;
+    }&#xD;
+    lastProp = prop;&#xD;
+    return prop;&#xD;
+</body>
+          </ownedBehavior>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_evnbQJZdEeimz_DnnOMIWg" name="IA" visibility="public" method="_evxMQJZdEeimz_DnnOMIWg">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_evwlMJZdEeimz_DnnOMIWg" name="properties" type="_doEkYJZdEeimz_DnnOMIWg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_NPzjAJiuEeilzLp3awIxoQ" name="IA" visibility="public" method="_NUJ3gJiuEeilzLp3awIxoQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NUE_AJiuEeilzLp3awIxoQ" name="frame" type="_H8TFQJCbEeiRGosyU19Rmw"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NUG0MJiuEeilzLp3awIxoQ" name="properties" type="_doEkYJZdEeimz_DnnOMIWg"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_NULssJiuEeilzLp3awIxoQ" name="IAProp" visibility="public" method="_NURMQJiuEeilzLp3awIxoQ">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NUOI8JiuEeilzLp3awIxoQ" type="_H2vP0JCbEeiRGosyU19Rmw" direction="return"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NUP-IJiuEeilzLp3awIxoQ" name="rep" type="_H2vP0JCbEeiRGosyU19Rmw"/>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_VIXKMJW6Eei01sMdaRndjQ" name="GameMaster" visibility="public" isAbstract="true">
@@ -984,4 +1217,5 @@
   <PapyrusJava:External xmi:id="_grvwwJZdEeimz_DnnOMIWg" name="javax.swing.ButtonGroup" base_Classifier="_grstcJZdEeimz_DnnOMIWg"/>
   <PapyrusJava:External xmi:id="_gr2ecJZdEeimz_DnnOMIWg" name="javax.swing.JRadioButtonMenuItem" base_Classifier="_grxl8JZdEeimz_DnnOMIWg"/>
   <PapyrusJava:External xmi:id="_gr_oYJZdEeimz_DnnOMIWg" name="Configuration" base_Classifier="_dl-SoJZdEeimz_DnnOMIWg"/>
+  <standard:Create xmi:id="_NUBUoJiuEeilzLp3awIxoQ" base_BehavioralFeature="_NPzjAJiuEeilzLp3awIxoQ"/>
 </xmi:XMI>

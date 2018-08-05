@@ -4,8 +4,8 @@ public class Propriete {
 	private String nbTours;
 	private String nbChiffres;
 	private boolean modeDev;
-	
-	
+
+
 	public String getNbTours() {
 		return nbTours;
 	}
@@ -24,6 +24,6 @@ public class Propriete {
 	public void setModeDev(boolean modeDev) {
 		this.modeDev = modeDev;
 	}
-	
+
 
 }

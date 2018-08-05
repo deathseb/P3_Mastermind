@@ -13,11 +13,11 @@ public abstract class GameMaster {
 	protected String combi = "";
 	protected boolean dev;
 	protected String egale ="";
-	
+
 	protected Properties properties;
-	
+
 	protected JLabel retour = new JLabel();
-	
+
 	public GameMaster(Propriete properties) {
 		/*String temp = properties.getProperty("nbTours");
 		System.out.println(temp);
@@ -34,12 +34,12 @@ public abstract class GameMaster {
 			combi = combi + d.intValue();
 			egale = egale +"=";
 		}
-		
+
 	}
-	
+
 	public JLabel reponse (JLabel prop, JFrame frame) {
 		String res = "";
-		
+
 		if (nbTours == 0) {
 			JOptionPane.showMessageDialog(null, "Game Over ! Vous n'avez pas réussi à trouver la combinaison qui était " + combi, "Game Over!!", JOptionPane.INFORMATION_MESSAGE);
 			frame.getContentPane().removeAll();
@@ -61,7 +61,7 @@ public abstract class GameMaster {
 			retour.setText(res);
 		}
 		return retour;
-		
-		
+
+
 	}
 }

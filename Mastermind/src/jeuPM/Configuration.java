@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class Configuration extends JDialog {
 
-	
+
 	private JPanel panDev = new JPanel();
 	private JPanel panOk = new JPanel();
 	private JPanel panInfo = new JPanel();
@@ -35,7 +35,7 @@ public class Configuration extends JDialog {
 	private JTextField textChiffre = new JTextField();
 	private JButton ok = new JButton("Valider");
 	private GridLayout gl = new GridLayout(2,2);
-	
+
 	private Propriete p = new Propriete();
 
 	private Properties prop = new Properties();
@@ -53,7 +53,7 @@ public class Configuration extends JDialog {
 		this.setTitle("Configuration");
 		this.setSize(new Dimension(500,250));
 		this.setLocationRelativeTo(null);
-	
+
 		panOk.add(ok);
 		panInfo.setLayout(gl);
 		panInfo.add(tours);
@@ -64,7 +64,7 @@ public class Configuration extends JDialog {
 		this.getContentPane().add(panOk, BorderLayout.CENTER);
 
 		loadProperties();
-		
+
 		p.setModeDev(modeDev.isSelected());
 		p.setNbChiffres(textChiffre.getText());
 		p.setNbTours(textTours.getText());
@@ -86,6 +86,8 @@ public class Configuration extends JDialog {
 				}else {
 					prop.setProperty("modeDev", "false");
 				}
+				/*String version = prop.getProperty("version");
+				prop.setProperty("version", version);*/
 
 				// Charge le contenu de ton objet Properties dans ton fichier properties
 				FileOutputStream oStream;
@@ -117,8 +119,8 @@ public class Configuration extends JDialog {
 		textTours.setText((String) properties.getObject("nbTours"));
 		textChiffre.setText((String) properties.getObject("nbChiffre"));
 	}
-	
-	
+
+
 	public Propriete getProperties() {
 		return p;
 	}
