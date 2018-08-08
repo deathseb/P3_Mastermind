@@ -21,7 +21,7 @@ public class IA extends GameMaster{
 	private JPanel panDev = new JPanel();
 	private JTextField jtf = new JTextField();
 	private JButton envoie = new JButton("Proposer");
-	private GridLayout gridGenerale = new GridLayout(this.nbTours + 1, 2);
+	private GridLayout gridGenerale = new GridLayout();
 	private GridLayout gridDonnees = new GridLayout (2, 1);
 	private GridLayout gridInfo = new GridLayout(1,2);
 	private JLabel prop = new JLabel("Proposition");
@@ -37,6 +37,8 @@ public class IA extends GameMaster{
 		panDev.setLayout(gridInfo);
 		comptTours.setText("Il reste " + nbTours + " tours.");
 		panDev.add(comptTours);
+		gridGenerale.setColumns(2);
+		gridGenerale.setRows(gridGenerale.getRows()+1);
 
 		if (lastProp == "") {
 			for (int i=0; i < combi.length(); i++) {
@@ -56,6 +58,7 @@ public class IA extends GameMaster{
 						comptTours.setText("Il reste " + nbTours + " tours.");
 						panDev.add(comptTours);
 						repo.setText(jtf.getText());
+						gridGenerale.setRows(gridGenerale.getRows()+1);
 						pan.add(repo);
 						if (repo.getText().equals(egale)) {
 							JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);

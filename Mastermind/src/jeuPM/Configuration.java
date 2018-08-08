@@ -90,7 +90,7 @@ public class Configuration extends JDialog {
 				prop.setProperty("version", version);*/
 
 				// Charge le contenu de ton objet Properties dans ton fichier properties
-				FileOutputStream oStream;
+				FileOutputStream oStream = null;
 				try {
 					oStream = new FileOutputStream(fProp);
 					prop.store(oStream, "") ;
@@ -98,6 +98,14 @@ public class Configuration extends JDialog {
 					e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
+				}
+				finally {
+					try {
+						oStream.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				p.setModeDev(modeDev.isSelected());
 				p.setNbChiffres(textChiffre.getText());
