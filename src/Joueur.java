@@ -18,7 +18,7 @@ public class Joueur extends GameMaster{
 	private JPanel panEnvoie = new JPanel();
 	private JTextField jtf = new JTextField();
 	private JButton envoie = new JButton("Proposer");
-	private GridLayout gridGenerale;
+	private GridLayout gridGenerale  = new GridLayout();
 	private GridLayout gridDonnees = new GridLayout (2, 1);
 	private JLabel prop = new JLabel("Proposition");
 	private JLabel rep = new JLabel("Réponse");
@@ -31,7 +31,6 @@ public class Joueur extends GameMaster{
 
 	public Joueur(JFrame frame, Propriete properties) {
 		super(properties);
-		gridGenerale = new GridLayout();
 		gridGenerale.setColumns(2);
 		panDev.setLayout(gridInfo);
 		comptTours.setText("Il reste " + nbTours + " tours.");
