@@ -1,10 +1,12 @@
-package jeuPM;
+package fr.deathseb.jeupm.controller;
 
 import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import fr.deathseb.jeupm.beans.Propriete;
 
 public abstract class GameMaster {
 
@@ -41,7 +43,7 @@ public abstract class GameMaster {
 		String res = "";
 
 		if (nbTours == 0) {
-			JOptionPane.showMessageDialog(null, "Game Over ! Vous n'avez pas réussi à trouver la combinaison qui était " + combi, "Game Over!!", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Game Over ! Vous n'avez pas rÃ©ussi Ã  trouver la combinaison qui Ã©tait " + combi, "Game Over!!", JOptionPane.INFORMATION_MESSAGE);
 			frame.getContentPane().removeAll();
 		}else {
 			for (int i =0; i < combi.length(); i++) {
