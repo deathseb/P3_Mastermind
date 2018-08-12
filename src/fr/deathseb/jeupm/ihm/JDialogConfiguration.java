@@ -1,4 +1,4 @@
-package jeuPM;
+package fr.deathseb.jeupm.ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -20,14 +20,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-@SuppressWarnings("serial")
-public class Configuration extends JDialog {
+import fr.deathseb.jeupm.beans.Propriete;
 
+/**
+ * LA boite de dialogue de configuration des propriÃ©tÃ©s du jeu.
+ * @author vifie
+ *
+ */
+public class JDialogConfiguration extends JDialog {
 
+    //-- Default UID for Serializable Object
+	private static final long serialVersionUID = 1L;
+	
+	//-- Les variables d'instances
 	private JPanel panDev = new JPanel();
 	private JPanel panOk = new JPanel();
 	private JPanel panInfo = new JPanel();
-	private JCheckBox modeDev = new JCheckBox("Mode Développeur");
+	private JCheckBox modeDev = new JCheckBox("Mode DÃ©veloppeur");
 	private JDialog jd = this;
 	private JLabel tours = new JLabel("Nombre de tours de jeu : ");
 	private JLabel chiffre = new JLabel ("Nombre de chiffre dans la combinaison : ");
@@ -37,18 +46,24 @@ public class Configuration extends JDialog {
 	private GridLayout gl = new GridLayout(2,2);
 
 	private Propriete p = new Propriete();
+	private String version;
 
 	private Properties prop = new Properties();
-	private File fProp = new File("src/ressources/ressourcePM.properties");
-	private Locale locale = new Locale("fr", "FR");
-	private ResourceBundle properties = ResourceBundle.getBundle("ressources/ressourcePM", locale);
+	private File fProp = new File("resources/ressourcePM_fr_FR.properties");
+	private Locale locale = Locale.getDefault();
+	private ResourceBundle properties = ResourceBundle.getBundle("ressourcePM", locale);
 
 
-
-	public Configuration() {
+	/**
+	 * Constructeur de la boite de Dialogue.
+	 */
+	public JDialogConfiguration() {
 		initContent();
 	}
 
+	/**
+	 * Initialiser le contenu de la boite de dialogue.
+	 */
 	private void initContent() {
 		this.setTitle("Configuration");
 		this.setSize(new Dimension(500,250));
@@ -69,25 +84,29 @@ public class Configuration extends JDialog {
 		p.setNbChiffres(textChiffre.getText());
 		p.setNbTours(textTours.getText());
 
-		//Fermeture de la fenêtre et gestion de la sauvegarde
+		//Fermeture de la fenï¿½tre et gestion de la sauvegarde
 		ok.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				// Change la valeur de la clé dans l'objet Properties
-				String tours= textTours.getText();
+				//-- Le nombre de tours de jeu.
+				String tours = textTours.getText();
 				prop.setProperty("nbTours",tours) ;
+				
+				//-- Le nombre de chiffre.
 				String chiffre = textChiffre.getText();
 				prop.setProperty("nbChiffre", chiffre);
+				
+				//-- Le mode dÃ©veloppeur.
 				boolean b = modeDev.isSelected();
 				if (b) {
 					prop.setProperty("modeDev", "true");
 				}else {
 					prop.setProperty("modeDev", "false");
 				}
-				/*String version = prop.getProperty("version");
-				prop.setProperty("version", version);*/
+				//-- On ne change pas la version.
+				prop.setProperty("version", version);
 
 				// Charge le contenu de ton objet Properties dans ton fichier properties
 				FileOutputStream oStream = null;
@@ -102,8 +121,8 @@ public class Configuration extends JDialog {
 				finally {
 					try {
 						oStream.close();
+						System.out.println("Le fichier properties a Ã©tÃ© modifiÃ©");
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -112,23 +131,28 @@ public class Configuration extends JDialog {
 				p.setNbTours(textTours.getText());
 				jd.setVisible(false);		
 			}
-
 		});
-
 	}
 
-	private void loadProperties() { //Charge le contenu du fichier properties dans les objects prévu
+	/**
+	 * 
+	 */
+	private void loadProperties() { //Charge le contenu du fichier properties dans les objects prï¿½vu
 		String dev = (String) properties.getObject("modeDev");
 		panDev.add(modeDev);
 		modeDev.setSelected(true);
 		if (dev.equals("true")) {
 			this.getContentPane().add(panDev, BorderLayout.SOUTH);
 		}
-		textTours.setText((String) properties.getObject("nbTours"));
-		textChiffre.setText((String) properties.getObject("nbChiffre"));
+		textTours.setText(properties.getString("nbTours"));
+		textChiffre.setText(properties.getString("nbChiffre"));
+		version = properties.getString("version");
 	}
 
-
+	/**
+	 * 
+	 * @return
+	 */
 	public Propriete getProperties() {
 		return p;
 	}

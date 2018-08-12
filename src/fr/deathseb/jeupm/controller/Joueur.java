@@ -1,4 +1,4 @@
-package jeuPM;
+package fr.deathseb.jeupm.controller;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Joueur extends GameMaster{
+import fr.deathseb.jeupm.beans.Propriete;
+
+public class Joueur extends GameMaster {
 
 	private JPanel pan = new JPanel();
 	private JPanel panEnvoie = new JPanel();
@@ -21,7 +23,7 @@ public class Joueur extends GameMaster{
 	private GridLayout gridGenerale  = new GridLayout();
 	private GridLayout gridDonnees = new GridLayout (2, 1);
 	private JLabel prop = new JLabel("Proposition");
-	private JLabel rep = new JLabel("Réponse");
+	private JLabel rep = new JLabel("RÃ©ponse");
 	private GridLayout gridInfo = new GridLayout(1,2);
 	private JLabel comptTours = new JLabel();
 	private JPanel panDev = new JPanel();
@@ -53,7 +55,7 @@ public class Joueur extends GameMaster{
 						pan.add(propo);
 						JLabel retour = reponse(propo, frame);
 						if (retour.getText().equals(egale)) {
-							JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"FÃ©licitations!!", JOptionPane.INFORMATION_MESSAGE);
 							frame.getContentPane().remove(pan);
 							frame.getContentPane().remove(panEnvoie);
 							frame.getContentPane().remove(panDev);
@@ -76,7 +78,7 @@ public class Joueur extends GameMaster{
 		});
 
 		if (dev) {
-			modeDev.setText("Mode développeur activé.   Combinaison : " + combi);
+			modeDev.setText("Mode dÃ©veloppeur activÃ©.   Combinaison : " + combi);
 			panDev.add(modeDev);
 			frame.getContentPane().add(panDev, BorderLayout.NORTH);
 		}

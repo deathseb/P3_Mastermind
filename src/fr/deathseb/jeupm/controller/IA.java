@@ -1,4 +1,4 @@
-package jeuPM;
+package fr.deathseb.jeupm.controller;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import fr.deathseb.jeupm.beans.Propriete;
 
 public class IA extends GameMaster{
 
@@ -25,7 +27,7 @@ public class IA extends GameMaster{
 	private GridLayout gridDonnees = new GridLayout (2, 1);
 	private GridLayout gridInfo = new GridLayout(1,2);
 	private JLabel prop = new JLabel("Proposition");
-	private JLabel rep = new JLabel("Réponse");
+	private JLabel rep = new JLabel("RÃ©ponse");
 	private JLabel comptTours = new JLabel();
 	private JLabel propo = new JLabel();
 	private JLabel modeDev = new JLabel();
@@ -61,7 +63,7 @@ public class IA extends GameMaster{
 						gridGenerale.setRows(gridGenerale.getRows()+1);
 						pan.add(repo);
 						if (repo.getText().equals(egale)) {
-							JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"Félicitations!!", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Vous avez trouvez la combinaison, bravo !!" ,"FÃ©licitations!!", JOptionPane.INFORMATION_MESSAGE);
 							frame.getContentPane().remove(pan);
 							frame.getContentPane().remove(panEnvoie);
 							frame.getContentPane().remove(panDev);
